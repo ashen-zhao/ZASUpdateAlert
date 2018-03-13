@@ -104,7 +104,7 @@ class ZASUpdateAlert: UIView {
         
         let topImage = UIImageView(frame: CGRect.init(x: 0, y: 20, width: contentView.frame.width, height: topImageHeight))
         topImage.contentMode = .scaleAspectFit
-        topImage.image = UIImage(named: "VersionUpdate_Icon")
+        topImage.image = UIImage(named: "zas_update")
         contentView.addSubview(topImage)
         
         let lblVersion = UILabel(frame: CGRect.init(x: 0, y: topImage.frame.maxY + 10, width: contentView.frame.width, height: lblVersionHeight))
@@ -144,7 +144,7 @@ class ZASUpdateAlert: UIView {
             let btnCancel = UIButton(type: .system)
             btnCancel.bounds = CGRect.init(x: 0, y: 0, width: btnCancelWidth, height: btnCancelWidth)
             btnCancel.center = CGPoint.init(x: contentView.frame.maxX, y: contentView.frame.minY)
-            btnCancel.setImage(UIImage(named: "VersionUpdate_Cancel")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            btnCancel.setImage(UIImage(named: "zas_cancel")?.withRenderingMode(.alwaysOriginal), for: .normal)
             btnCancel.addTarget(self, action: #selector(cancelAlertAction), for: UIControlEvents.touchUpInside)
             self.addSubview(btnCancel)
             
