@@ -24,8 +24,8 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = <<-DESC
-                   DESC
+  # s.description  = <<-DESC
+                  #  DESC
 
   s.homepage     = "https://github.com/ashen-zhao/ZASUpdateAlert"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = { :type => "MIT", :file => "LICENSE" }
+  s.license      = { :type => "MIT" }
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -52,7 +52,7 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "Zhao A Shen" => "zhaoashen@gmail.com" }
+  s.author             = { "ZHAOASHEN" => "zhaoashen@gmail.com" }
   # Or just: s.author    = "ashen-zhao"
   # s.authors            = { "ashen-zhao" => "zhaoashen@gmail.com" }
   # s.social_media_url   = "http://twitter.com/ashen-zhao"
