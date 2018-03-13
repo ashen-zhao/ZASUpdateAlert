@@ -7,31 +7,40 @@
 //
 
 import UIKit
-import Foundation
-
-
+fileprivate let screenWidth = UIScreen.main.bounds.width
+fileprivate let screenHeight = UIScreen.main.bounds.height
 class ZASUpdateAlert: UIView {
     
     /// 特别说明：appId可以是app的唯一标志(跳转到appStore)，也可以是http地址(跳转到Safari)
-    class func show(version ver:String, content:String, appId:String, isMustUpdate:Bool) {
+    @discardableResult
+    open class func show(version ver:String, content:String, appId:String, isMustUpdate:Bool)->ZASUpdateAlert? {
         let alert = ZASUpdateAlert(version: ver, content: content, appId: appId, isMustUpdate: isMustUpdate)
         // 延迟添加到window上，防止在root视图还没有显示出来时，导致更新视图被root视图覆盖
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.168) {
             UIApplication.shared.delegate?.window!!.addSubview(alert)
         }
+        return alert
     }
     
-    private let screenWidth = UIScreen.main.bounds.width
-    private let screenHeight = UIScreen.main.bounds.height
-    private let alertMaxHeight = UIScreen.main.bounds.height * 2 / 3
-    private let topImageHeight:CGFloat = 166
+    private let alertMaxHeight = screenHeight * 2 / 3
+    private let topImageHeight:CGFloat = screenWidth * 0.44
     private let lblVersionHeight:CGFloat = 28
     private let btnUpdateHeight:CGFloat = 40
     private let btnCancelWidth:CGFloat = 36
+    
     private var upVersion = ""
     private var upContent = ""
     private var upAppId = "http://www.devashen.com"
     private var upMustUpdate = false
+
+    private var listTxt:UITextView!
+    
+    ///更新内容的字体大小
+    open var txtFont:CGFloat = 17 {
+        didSet {
+            listTxt.font = UIFont.systemFont(ofSize: txtFont)
+        }
+    }
     
     init(version ver:String, content:String, appId:String, isMustUpdate:Bool) {
         super.init(frame: CGRect.zero)
@@ -73,9 +82,7 @@ class ZASUpdateAlert: UIView {
     
     // MARK: - Methods
     
-    
-    
-    func makeUI() {
+    private func makeUI() {
         self.frame = UIScreen.main.bounds
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         
@@ -95,7 +102,8 @@ class ZASUpdateAlert: UIView {
         contentView.layer.cornerRadius = 4
         self.addSubview(contentView)
         
-        let topImage = UIImageView(frame: CGRect.init(x: (contentView.frame.width - 178) / 2, y: 20, width: 178, height: topImageHeight))
+        let topImage = UIImageView(frame: CGRect.init(x: 0, y: 20, width: contentView.frame.width, height: topImageHeight))
+        topImage.contentMode = .scaleAspectFit
         topImage.image = UIImage(named: "VersionUpdate_Icon")
         contentView.addSubview(topImage)
         
@@ -105,16 +113,21 @@ class ZASUpdateAlert: UIView {
         lblVersion.text = String(format:"发现新版本%@",upVersion)
         contentView.addSubview(lblVersion)
         
-        let listTxt = UITextView(frame: CGRect.init(x: 28, y: lblVersion.frame.maxY + 10, width: contentView.frame.width - 56, height: strHeight))
+        listTxt = UITextView(frame: CGRect.init(x: 28, y: lblVersion.frame.maxY + 10, width: contentView.frame.width - 56, height: strHeight))
         listTxt.font = UIFont.systemFont(ofSize: 17)
-        listTxt.textContainer.lineFragmentPadding = 0
-        listTxt.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
         listTxt.text = upContent
         listTxt.isEditable = false
         listTxt.isSelectable = false
         listTxt.isScrollEnabled = isScrollList
         listTxt.showsVerticalScrollIndicator = isScrollList
         listTxt.showsHorizontalScrollIndicator = false
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 5
+        let attributes = [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17),
+                          NSAttributedStringKey.paragraphStyle:style]
+        listTxt.attributedText = NSAttributedString(string: listTxt.text, attributes: attributes)
+        
         contentView.addSubview(listTxt)
         
         let btnUpdate = UIButton(type: .system)
@@ -139,10 +152,13 @@ class ZASUpdateAlert: UIView {
     }
     
     /// 获取字符串的size
-    
-    func sizeOfString(_ str:String)->CGSize {
+    private func sizeOfString(_ str:String)->CGSize {
         let string = str as NSString
-        let size = string.boundingRect(with: CGSize.init(width: screenWidth - 80 - 56, height: 1000), options: NSStringDrawingOptions(rawValue: NSStringDrawingOptions.RawValue(UInt8(NSStringDrawingOptions.usesLineFragmentOrigin.rawValue) | UInt8(NSStringDrawingOptions.usesFontLeading.rawValue))), attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)], context: nil).size
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 5
+        let attributes = [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17),
+                          NSAttributedStringKey.paragraphStyle:style]
+        let size = string.boundingRect(with: CGSize.init(width: screenWidth - 80 - 56, height: 1000), options: NSStringDrawingOptions(rawValue: NSStringDrawingOptions.RawValue(UInt8(NSStringDrawingOptions.usesLineFragmentOrigin.rawValue) | UInt8(NSStringDrawingOptions.usesFontLeading.rawValue))), attributes:attributes, context: nil).size
         return size
     }
 }
