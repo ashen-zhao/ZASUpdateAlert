@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/ashen-zhao/ZASUpdateAlert"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
-  s.license      = "MIT"
+  s.license      = { :type => "MIT", :file => "LICENSE" }
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
   s.author             = { "ZHAOASHEN" => "zhaoashen@gmail.com" }
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.source = { :git => "https://github.com/ashen-zhao/ZASUpdateAlert.git", :tag => "#{s.version}" }
 
 
-  s.source_files  = "ZASUpdateAlert", "ZASUpdateAlert/ZASUpdateAlert/**/*.{swift}"
+  s.source_files  = "ZASUpdateAlert/ZASUpdateAlert/ZASUpdateAlert.swift"
  
   s.resources = "ZASUpdateAlert/ZASUpdateAlert/*.png"
 
