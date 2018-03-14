@@ -13,8 +13,7 @@
 		8CC8DAE5204FB74C0044A4E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CC8DAE4204FB74C0044A4E0 /* Assets.xcassets */; };
 		8CC8DAE8204FB74C0044A4E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CC8DAE6204FB74C0044A4E0 /* LaunchScreen.storyboard */; };
 		8CC8DAF52057C2C30044A4E0 /* ZASUpdateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC8DAF42057C2C30044A4E0 /* ZASUpdateAlert.swift */; };
-		8CC8DAFA2057C7FA0044A4E0 /* zas_update@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC8DAF82057C7720044A4E0 /* zas_update@2x.png */; };
-		8CC8DAFB2057C7FD0044A4E0 /* zas_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC8DAF92057C7720044A4E0 /* zas_cancel@2x.png */; };
+		8CC8DAFD2058C1A10044A4E0 /* ZASUpdateAlert.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8CC8DAFC2058C1A10044A4E0 /* ZASUpdateAlert.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +25,7 @@
 		8CC8DAE7204FB74C0044A4E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CC8DAE9204FB74C0044A4E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CC8DAF42057C2C30044A4E0 /* ZASUpdateAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZASUpdateAlert.swift; sourceTree = "<group>"; };
-		8CC8DAF82057C7720044A4E0 /* zas_update@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zas_update@2x.png"; sourceTree = "<group>"; };
-		8CC8DAF92057C7720044A4E0 /* zas_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zas_cancel@2x.png"; sourceTree = "<group>"; };
+		8CC8DAFC2058C1A10044A4E0 /* ZASUpdateAlert.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZASUpdateAlert.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				8CC8DAF42057C2C30044A4E0 /* ZASUpdateAlert.swift */,
-				8CC8DAF92057C7720044A4E0 /* zas_cancel@2x.png */,
-				8CC8DAF82057C7720044A4E0 /* zas_update@2x.png */,
+				8CC8DAFC2058C1A10044A4E0 /* ZASUpdateAlert.bundle */,
 			);
 			path = ZASUpdateAlert;
 			sourceTree = "<group>";
@@ -140,10 +137,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC8DAFD2058C1A10044A4E0 /* ZASUpdateAlert.bundle in Resources */,
 				8CC8DAE8204FB74C0044A4E0 /* LaunchScreen.storyboard in Resources */,
 				8CC8DAE5204FB74C0044A4E0 /* Assets.xcassets in Resources */,
-				8CC8DAFB2057C7FD0044A4E0 /* zas_cancel@2x.png in Resources */,
-				8CC8DAFA2057C7FA0044A4E0 /* zas_update@2x.png in Resources */,
 				8CC8DAE3204FB74C0044A4E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

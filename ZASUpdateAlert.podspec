@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 
   s.source_files  = "ZASUpdateAlert/ZASUpdateAlert/ZASUpdateAlert.swift"
  
-  s.resources = "ZASUpdateAlert/ZASUpdateAlert/*.png"
+  s.resources = "ZASUpdateAlert/ZASUpdateAlert/ZASUpdateAlert.bundle"
 
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4' }
 

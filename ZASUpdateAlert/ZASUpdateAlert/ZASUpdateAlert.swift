@@ -9,11 +9,11 @@
 import UIKit
 fileprivate let screenWidth = UIScreen.main.bounds.width
 fileprivate let screenHeight = UIScreen.main.bounds.height
-class ZASUpdateAlert: UIView {
+public class ZASUpdateAlert: UIView {
     
     /// 特别说明：appId可以是app的唯一标志(跳转到appStore)，也可以是http地址(跳转到Safari)
     @discardableResult
-    open class func show(version ver:String, content:String, appId:String, isMustUpdate:Bool)->ZASUpdateAlert? {
+    public class func show(version ver:String, content:String, appId:String, isMustUpdate:Bool)->ZASUpdateAlert? {
         let alert = ZASUpdateAlert(version: ver, content: content, appId: appId, isMustUpdate: isMustUpdate)
         // 延迟添加到window上，防止在root视图还没有显示出来时，导致更新视图被root视图覆盖
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.168) {
@@ -36,7 +36,7 @@ class ZASUpdateAlert: UIView {
     private var listTxt:UITextView!
     
     ///更新内容的字体大小
-    open var txtFont:CGFloat = 17 {
+    public var txtFont:CGFloat = 17 {
         didSet {
             listTxt.font = UIFont.systemFont(ofSize: txtFont)
         }
@@ -51,13 +51,13 @@ class ZASUpdateAlert: UIView {
         makeUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Actions
     
-    @objc func cancelAlertAction() {
+    @objc private func cancelAlertAction() {
         UIView.animate(withDuration: 0.3, animations: {
             self.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)
             self.backgroundColor = UIColor.clear
@@ -67,7 +67,7 @@ class ZASUpdateAlert: UIView {
         }
     }
     
-    @objc func gotoUpdate() {
+    @objc private func gotoUpdate() {
         var appUrl = String(format:"itms-apps://itunes.apple.com/app/id%@",upAppId)
         if upAppId.contains("http://") || upAppId.contains("https://") {
             appUrl = upAppId
@@ -104,7 +104,7 @@ class ZASUpdateAlert: UIView {
         
         let topImage = UIImageView(frame: CGRect.init(x: 0, y: 20, width: contentView.frame.width, height: topImageHeight))
         topImage.contentMode = .scaleAspectFit
-        topImage.image = UIImage(named: "zas_update")
+        topImage.image = UIImage(named: "ZASUpdateAlert.bundle/zas_update.png", in: Bundle(for: ZASUpdateAlert.self), compatibleWith: nil)
         contentView.addSubview(topImage)
         
         let lblVersion = UILabel(frame: CGRect.init(x: 0, y: topImage.frame.maxY + 10, width: contentView.frame.width, height: lblVersionHeight))
@@ -144,7 +144,7 @@ class ZASUpdateAlert: UIView {
             let btnCancel = UIButton(type: .system)
             btnCancel.bounds = CGRect.init(x: 0, y: 0, width: btnCancelWidth, height: btnCancelWidth)
             btnCancel.center = CGPoint.init(x: contentView.frame.maxX, y: contentView.frame.minY)
-            btnCancel.setImage(UIImage(named: "zas_cancel")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            btnCancel.setImage(UIImage(named: "ZASUpdateAlert.bundle/zas_cancel.png", in: Bundle(for: ZASUpdateAlert.self), compatibleWith: nil)?.withRenderingMode(.alwaysOriginal), for: .normal)
             btnCancel.addTarget(self, action: #selector(cancelAlertAction), for: UIControlEvents.touchUpInside)
             self.addSubview(btnCancel)
             
