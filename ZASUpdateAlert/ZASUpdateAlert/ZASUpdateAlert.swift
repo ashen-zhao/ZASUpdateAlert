@@ -45,7 +45,7 @@ public class ZASUpdateAlert: UIView {
     init(version ver:String, content:String, appId:String, isMustUpdate:Bool) {
         super.init(frame: CGRect.zero)
         upVersion = ver
-        upContent = content
+        upContent = content+"\n"
         upAppId = appId
         upMustUpdate = isMustUpdate
         makeUI()
