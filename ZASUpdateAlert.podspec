@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZASUpdateAlert"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "ZASUpdateAlert 是检查更新的一个自定义弹框。"
 
   s.description  = <<-DESC
