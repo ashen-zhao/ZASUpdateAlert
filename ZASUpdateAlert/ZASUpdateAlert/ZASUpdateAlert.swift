@@ -124,8 +124,8 @@ public class ZASUpdateAlert: UIView {
         
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 5
-        let attributes = [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17),
-                          NSAttributedStringKey.paragraphStyle:style]
+        let attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17),
+                          NSAttributedString.Key.paragraphStyle:style]
         listTxt.attributedText = NSAttributedString(string: listTxt.text, attributes: attributes)
         
         contentView.addSubview(listTxt)
@@ -137,7 +137,7 @@ public class ZASUpdateAlert: UIView {
         btnUpdate.backgroundColor = UIColor(red: 34 / 255, green: 153 / 255, blue: 238 / 255, alpha: 1)
         btnUpdate.setTitleColor(UIColor.white, for: .normal)
         btnUpdate.setTitle("立即更新", for: .normal)
-        btnUpdate.addTarget(self, action: #selector(gotoUpdate), for: UIControlEvents.touchUpInside)
+        btnUpdate.addTarget(self, action: #selector(gotoUpdate), for: UIControl.Event.touchUpInside)
         contentView.addSubview(btnUpdate)
         
         if !upMustUpdate {
@@ -145,7 +145,7 @@ public class ZASUpdateAlert: UIView {
             btnCancel.bounds = CGRect.init(x: 0, y: 0, width: btnCancelWidth, height: btnCancelWidth)
             btnCancel.center = CGPoint.init(x: contentView.frame.maxX, y: contentView.frame.minY)
             btnCancel.setImage(UIImage(named: "ZASUpdateAlert.bundle/zas_cancel.png", in: Bundle(for: ZASUpdateAlert.self), compatibleWith: nil)?.withRenderingMode(.alwaysOriginal), for: .normal)
-            btnCancel.addTarget(self, action: #selector(cancelAlertAction), for: UIControlEvents.touchUpInside)
+            btnCancel.addTarget(self, action: #selector(cancelAlertAction), for: UIControl.Event.touchUpInside)
             self.addSubview(btnCancel)
             
         }
@@ -156,8 +156,8 @@ public class ZASUpdateAlert: UIView {
         let string = str as NSString
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 5
-        let attributes = [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17),
-                          NSAttributedStringKey.paragraphStyle:style]
+        let attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17),
+                          NSAttributedString.Key.paragraphStyle:style]
         let size = string.boundingRect(with: CGSize.init(width: screenWidth - 80 - 56, height: 1000), options: NSStringDrawingOptions(rawValue: NSStringDrawingOptions.RawValue(UInt8(NSStringDrawingOptions.usesLineFragmentOrigin.rawValue) | UInt8(NSStringDrawingOptions.usesFontLeading.rawValue))), attributes:attributes, context: nil).size
         return size
     }
