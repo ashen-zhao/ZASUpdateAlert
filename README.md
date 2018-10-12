@@ -13,7 +13,7 @@
 ## 要求
 iOS 8.0+
 Xcode 7.2+
-Swift 4.0
+Swift 4.0+
 
 ## 安装
 
@@ -21,6 +21,7 @@ Swift 4.0
 
 ```
 pod 'ZASUpdateAlert', '~> 0.1.0'
+pod 'ZASUpdateAlert', '~> 0.2.0' #(swift4.2)
 ```
 
 #### 手动安装
